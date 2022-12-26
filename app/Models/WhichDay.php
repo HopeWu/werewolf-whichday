@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+
+class WhichDay extends Model
+{
+    public $guarded = [];
+    protected $table = "which_day";
+}
