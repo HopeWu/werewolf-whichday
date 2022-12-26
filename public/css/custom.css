@@ -10,7 +10,7 @@ main{
     position: relative;
     width: 80%;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 .wrapper {
@@ -61,6 +61,32 @@ img.hamburger-icon{
     height: 1.5em;
     display: none;
     margin: 1em auto;
+}
+
+.main-photo{
+    width: 100%;
+    margin: 0.25em auto;
+    margin-bottom: 0;
+    border-radius: 10px;
+}
+.mouse{
+    width: 100%;
+    margin: 0.25em auto;
+    margin-bottom: 0;
+    border-radius: 40px;
+}
+
+.thank-you-note{
+    font-size: 1.5em;
+    color: #4cd0f6;
+}
+
+#ty-return{
+    margin-top:1.5em;
+}
+
+.wechat-id {
+    margin-top: 1em;
 }
 
 .dropdown-menu{
@@ -418,16 +444,16 @@ appointment button
 .fill-form button {
     all: initial;
     color: white;
-    background-color: #03A5D4;
+    background-color: #4cd0f6;
     font-weight: normal;
     font-size: 1.2em;
-    padding: 0.7em 1em;
+    padding: 0.2em 1em;
     text-align: center;
     border-radius: 10px;
     display: block;
     width: 14em;
     margin: 1em auto;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 fill-form button:hover,

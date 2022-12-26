@@ -1,6 +1,10 @@
-<x-master>
+<x-master2>
     <main>
         <article class="fill-form">
+            <div>
+                <img class="main-photo" src="images/castle-small.jpg" alt="">
+            </div>
+
             <form action="/whick-day" method="post">
                 @csrf
                 <div class="flex-center wechat-id">
@@ -26,5 +30,6 @@
                 <button type="submit">提交</button>
             </form>
         </article>
+
     </main>
-</x-master>
+</x-master2>
