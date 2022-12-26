@@ -31,7 +31,7 @@
 
                     <div class="time flex-center">
                         <input id="time" name="time" type="time"
-                               value="{{old('time')}}">
+                               value="17:00">
                     </div>
                     <div class="flex-center">
                         @error("time")
