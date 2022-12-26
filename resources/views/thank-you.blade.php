@@ -6,8 +6,11 @@
         <div class="flex-center thank-you-note">
             谢谢你呀, {{$wname}}~
         </div>
-        <button id="ty-return">
-            返回
-        </button>
+        <a href="/">
+            <button id="ty-return">
+                返回
+            </button>
+        </a>
+
     </main>
 </x-master2>
