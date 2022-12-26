@@ -69,6 +69,7 @@ img.hamburger-icon{
     margin-bottom: 0;
     border-radius: 10px;
     margin-top: 35%;
+    margin-bottom: 1em;
 }
 .mouse{
     width: 100%;
@@ -382,13 +383,19 @@ h1#now{
     width: 12em;
 }
 
-.time-slots label, .date input,.wechat-id input {
+
+form.which-day-time .inputs{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.time-slots label, .date input,.wechat-id input, .time input {
     border-radius: 5px;
     border: solid 1px #03A5D4;
-    padding: 4px 8px;
+    padding: 4px 0px;
     display: inline-block;
     text-align: center;
-    width: 10em;
+    width: 100%;
     white-space: nowrap;
 }
 
@@ -442,6 +449,7 @@ form.appointment{
 appointment button
  */
 
+/*
 .fill-form button {
     all: initial;
     color: white;
@@ -455,6 +463,21 @@ appointment button
     width: 14em;
     margin: 1em auto;
     margin-top: 1em;
+}
+ */
+.fill-form button {
+    all: initial;
+    color: white;
+    background-color: #4cd0f6;
+    font-weight: normal;
+    font-size: 1.2em;
+    padding: 0.2em 0em;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin: 1em auto;
+    margin-top: 1.5em;
 }
 
 fill-form button:hover,

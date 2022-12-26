@@ -5,29 +5,42 @@
                 <img class="main-photo" src="images/castle-small.jpg" alt="">
             </div>
 
-            <form action="/whick-day" method="post">
+            <form class="which-day-time" action="/whick-day" method="post">
                 @csrf
-                <div class="flex-center wechat-id">
-                    {{--            <label for="wechat-id" >微信名: </label>--}}
-                    <input id="wechat-id" placeholder="微信名" name="wechat-name" type="text">
-                </div>
-                <div class="flex-center">
-                    @error("wechat-name")
-                    <p class="error">{{$message}}</p>
-                    @enderror
+
+                <div class="inputs">
+                    <div class="flex-center wechat-id">
+                        {{--            <label for="wechat-id" >微信名: </label>--}}
+                        <input id="wechat-id" placeholder="微信名" name="wechat-name" type="text">
+                    </div>
+                    <div class="flex-center">
+                        @error("wechat-name")
+                        <p class="error">{{$message}}</p>
+                        @enderror
+                    </div>
+
+                    <div class="date flex-center">
+                        <input id="date" placeholder="日期" name="which-day" type="date"
+                               value="{{old('which-day')}}">
+                    </div>
+                    <div class="flex-center">
+                        @error("which-day")
+                        <p class="error">{{$message}}</p>
+                        @enderror
+                    </div>
+
+                    <div class="time flex-center">
+                        <input id="time" name="time" type="time"
+                               value="{{old('time')}}">
+                    </div>
+                    <div class="flex-center">
+                        @error("time")
+                        <p class="error">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <button type="submit">提交</button>
                 </div>
 
-                <div class="date flex-center">
-                    <input id="date" placeholder="日期" name="which-day" type="date"
-                           value="{{old('which-day')}}">
-                </div>
-                <div class="flex-center">
-                    @error("which-day")
-                    <p class="error">{{$message}}</p>
-                    @enderror
-                </div>
-
-                <button type="submit">提交</button>
             </form>
         </article>
 
