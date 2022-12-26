@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->string('wechat_name');
             $table->date("which_day");
+            $table->time('time');
         });
 
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('which_day');
     }
 };

@@ -15,7 +15,8 @@ class WhichDayController extends Controller
          */
         $validator = Validator::make($request->all(), [
             'which-day' => ["required", 'date'],
-            'wechat-name' => ["required", 'string']
+            'wechat-name' => ["required", 'string'],
+            'time' => ["required", 'time'],
         ]);
         if ($validator->fails()) {
             return redirect(url()->previous())
@@ -27,6 +28,7 @@ class WhichDayController extends Controller
         $whichDay = new WhichDay;
         $whichDay->wechat_name = $attributes['wechat-name'];
         $whichDay->which_day = $attributes['which-day'];
+        $whichDay->time = $attributes['time'];
 
         $whichDay->save();
 
