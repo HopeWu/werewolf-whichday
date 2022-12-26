@@ -16,7 +16,7 @@ class WhichDayController extends Controller
         $validator = Validator::make($request->all(), [
             'which-day' => ["required", 'date'],
             'wechat-name' => ["required", 'string'],
-            'time' => ["required", 'time'],
+            'time' => ["required", 'date_format:H:i'],
         ]);
         if ($validator->fails()) {
             return redirect(url()->previous())
