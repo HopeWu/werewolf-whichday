@@ -9,4 +9,8 @@ class WhichDay extends Model
     use HasFactory;
     public $guarded = [];
     protected $table = "which_day";
+
+    public static function votesFrom($data){
+
+    }
 }
