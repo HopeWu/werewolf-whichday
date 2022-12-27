@@ -38,8 +38,50 @@
         </article>
     @endisset
 
+    <article class="today schedules">
+        <h3>
+            查看投票结果
+        </h3>
+        <div>
+            <form action="/admin123qwe" method='post'>
+                @csrf
+                <label for="result-since">投票开始时间</label>
+                <input type="date" name="result-since" id="result-since">
+                @error("result-since")
+                <p class="error">{{$message}}</p>
+                @enderror
+                <div>
+                    <button type="submit">开始统计</button>
+                </div>
+            </form>
+            @isset($counter)
+                <div class="schedule">
+                    <table>
+                        <caption>Schedules for Today:</caption>
+                        <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>票数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($counter as $key => $value)
+                            <tr>
+                                <td>{{$key}}</td>
+                                <td>{{$value}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endisset
+        </div>
+    </article>
 
     <article class="today schedules">
+        <h3>
+            查询投票记录
+        </h3>
         <div>
             <form action="/admin123qwe" method='post'>
                 @csrf
@@ -49,9 +91,8 @@
                 <p class="error">{{$message}}</p>
                 @enderror
                 <div>
-                    <button type="submit">开始统计</button>
+                    <button type="submit">开始查询</button>
                 </div>
-
             </form>
         </div>
         @isset($votes)

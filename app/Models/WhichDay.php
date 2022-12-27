@@ -24,4 +24,23 @@ class WhichDay extends Model
             ->take(10)
             ->get();
     }
+
+    public static function resultSince($date): array
+    {
+        $votes = self::select('wechat_name', DB::raw('MAX(which_day) as which_day'), DB::raw('MAX(time) as time'))
+            ->where('which_day', '>=', $date)
+            ->groupBy('wechat_name')
+            ->get();
+
+        $counter = [];
+        foreach ($votes as $vote){
+            if(array_key_exists($vote->which_day, $counter)){
+                $counter[$vote->which_day] += 1;
+            }else{
+                $counter[$vote->which_day] = 1;
+            }
+        }
+        arsort($counter);
+        return array_slice($counter, 0, 5);
+    }
 }

@@ -10,35 +10,77 @@ class AdminPanelController extends Controller
 {
     public function index(Request $request)
     {
-
+        $isEmpty = true;
         $validator_list = Validator::make($request->all(), [
-            'since' => ['required', 'date']
+            'since' => ['required']
         ]);
-
         if (!$validator_list->fails()) {
-            $attributes = $validator_list->validated();
-            $votes = WhichDay::votesSince($attributes['since']);
-
-            return view('admin', [
-                'votes' => $votes,
+            $isEmpty = false;
+            $validator_list = Validator::make($request->all(), [
+                'since' => ['required', 'date']
             ]);
-        } else {
+
+            if ($validator_list->fails()) {
+                return redirect(url()->previous())
+                    ->withErrors($validator_list)
+                    ->withInput();
+            }else{
+                $attributes = $validator_list->validated();
+                $votes = WhichDay::votesSince($attributes['since']);
+
+                return view('admin', [
+                    'votes' => $votes,
+                ]);
+            }
+        }
+
+        $validator_search = Validator::make($request->all(), [
+            'wechat-name' => ['required']
+        ]);
+        if (!$validator_search->fails()) {
+            $isEmpty = false;
             $validator_search = Validator::make($request->all(), [
-                'wechat-name' => ['required', 'string'],
+                'wechat-name' => ['string']
             ]);
 
-            if (!$validator_search->fails()) {
+            if ($validator_search->fails()) {
+                return redirect(url()->previous())
+                    ->withErrors($validator_search)
+                    ->withInput();
+            }else{
                 $attributes = $validator_search->validated();
                 $records = WhichDay::votedBy($attributes['wechat-name']);
 
                 return view('admin', [
-                        'records' => $records,
+                    'records' => $records,
                 ]);
-            } else {
-                return redirect(url()->previous())
-                    ->withErrors($validator_list)
-                    ->withInput();
             }
         }
+
+        $validator_result = Validator::make($request->all(), [
+            'result-since' => ['required']
+        ]);
+        if (!$validator_result->fails()) {
+            $isEmpty = false;
+            $validator_result = Validator::make($request->all(), [
+                'result-since' => ['date']
+            ]);
+
+            if ($validator_result->fails()) {
+                return redirect(url()->previous())
+                    ->withErrors($validator_result)
+                    ->withInput();
+            }else{
+                $attributes = $validator_result->validated();
+                $counter = WhichDay::resultSince($attributes['result-since']);
+
+                return view('admin', [
+                    'counter' => $counter,
+                ]);
+            }
+        }
+        return redirect(url()->previous())
+            ->withErrors($validator_result)
+            ->withInput();
     }
 }
