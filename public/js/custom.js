@@ -29,14 +29,12 @@ flatpickr('.date input',{
         function(date) {
             // return true to disable
             // alert(date);
-            let availableWeekdays = [1,2,3,4,5,6,7];
+            let availableWeekdays = [0,1,2,3,4,5,6];
             if(availableWeekdays.includes(date.getDay()))
             {
                 return false;
-                //return true;
             }
             else{
-                //return false;
                 return true;
             }
         }
