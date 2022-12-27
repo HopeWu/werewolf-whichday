@@ -6,194 +6,41 @@
         </div>
     </div>
     <article class="today schedules">
-        <div class="schedule">
-            <table>
-                <caption>Schedules for Today:</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time slot</th>
-                    <th>Duration</th>
-                    <th>Details</th>
-                    <th>Meet</th>
-                    <th>Meet</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($todays as $item)
-                    <tr>
-                        <td>{{$item->date}}</td>
-                        <td>{{$item->start_end_time}}</td>
-                        <td>{{$item->duration}}</td>
-                        <td><a href="/appointment/{{$item->id}}/details">Click</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_start_url}}">Start</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_join_url}}">Join</a></td>
-                        <td>
-                            @if($item->payment_status)
-                                Paid
-                            @else
-                                Unpaid
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </article>
-    <article class="tomorrow schedules">
-        <div class="schedule">
-            <table>
-                <caption>Schedules for Tomorrow:</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time slot</th>
-                    <th>Duration</th>
-                    <th>Details</th>
-                    <th>Meet</th>
-                    <th>Meet</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($tomorrows as $item)
-                    <tr>
-                        <td>{{$item->date}}</td>
-                        <td>{{$item->start_end_time}}</td>
-                        <td>{{$item->duration}}</td>
-                        <td><a href="/appointment/{{$item->id}}/details">Click</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_start_url}}">Start</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_join_url}}">Join</a></td>
-                        <td>
-                            @if($item->payment_status)
-                                Paid
-                            @else
-                                Unpaid
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </article>
-    <article class="the-day-after-tomorrow schedules">
-        <div class="schedule">
-            <table>
-                <caption>Schedules for the Day after Tomorrow:</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time slot</th>
-                    <th>Duration</th>
-                    <th>Details</th>
-                    <th>Meet</th>
-                    <th>Meet</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($theDayAfterTomorrows as $item)
-                    <tr>
-                        <td>{{$item->date}}</td>
-                        <td>{{$item->start_end_time}}</td>
-                        <td>{{$item->duration}}</td>
-                        <td><a href="/appointment/{{$item->id}}/details">Click</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_start_url}}">Start</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_join_url}}">Join</a></td>
-                        <td>
-                            @if($item->payment_status)
-                                Paid
-                            @else
-                                Unpaid
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </article>
+        <div>
+            <form action="/admin123qwe" method='post'>
+                @csrf
+                <label for="since">选择计票开始时间</label>
+                <input type="date" name="since" id="since">
+                @error("since")
+                <p class="error">{{$message}}</p>
+                @enderror
+                <div><button type="submit">开始统计</button></div>
 
-    <article class="latest-20 schedules">
-        <div class="schedule">
-            <table>
-                <caption>Lastest 20 orders:</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time slot</th>
-                    <th>Duration</th>
-                    <th>Created at</th>
-                    <th>Details</th>
-                    <th>Meet</th>
-                    <th>Meet</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($latest as $item)
-                    <tr>
-                        <td>{{$item->date}}</td>
-                        <td>{{$item->start_end_time}}</td>
-                        <td>{{$item->duration}}</td>
-                        <td>{{$item->created_at}}</td>
-                        <td><a href="/appointment/{{$item->id}}/details">Click</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_start_url}}">Start</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_join_url}}">Join</a></td>
-                        <td>
-                            @if($item->payment_status)
-                                Paid
-                            @else
-                                Unpaid
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            </form>
         </div>
-    </article>
+        @isset($votes)
+            <div class="schedule">
+                <table>
+                    <caption>Schedules for Today:</caption>
+                    <thead>
+                    <tr>
+                        <th>微信名</th>
+                        <th>选择日期</th>
+                        <th>选择时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-    <article class="all-the-orders schedules">
-        <div class="schedule">
-            <table>
-                <caption>All the orders:</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time slot</th>
-                    <th>Duration</th>
-                    <th>Created at</th>
-                    <th>Details</th>
-                    <th>Meet</th>
-                    <th>Meet</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($all as $item)
-                    <tr>
-                        <td>{{$item->date}}</td>
-                        <td>{{$item->start_end_time}}</td>
-                        <td>{{$item->duration}}</td>
-                        <td>{{$item->created_at}}</td>
-                        <td><a href="/appointment/{{$item->id}}/details">Click</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_start_url}}">Start</a></td>
-                        <td><a target="_blank" href="{{$item->zoom_join_url}}">Join</a></td>
-                        <td>
-                            @if($item->payment_status)
-                                Paid
-                            @else
-                                Unpaid
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+                    @foreach($votes as $item)
+                        <tr>
+                            <td>{{$item->wechat_name}}</td>
+                            <td>{{$item->which_day}}</td>
+                            <td>{{$item->time}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endisset
     </article>
 </x-a-master>

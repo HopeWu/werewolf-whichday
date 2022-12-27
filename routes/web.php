@@ -25,8 +25,10 @@ Route::get('/admin123qwe', function () {
     return view('admin');
 })->name('admin');
 
+
 Route::get('/dash123qwe', function () {
     return view('admin');
 })->name('dashboard');
 
 Route::post('whick-day', 'App\Http\Controllers\WhichDayController@store');
+Route::post('admin123qwe', 'App\Http\Controllers\AdminPanelController@index');

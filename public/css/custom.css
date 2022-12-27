@@ -372,7 +372,7 @@ h1#now{
     justify-content: center;
 }
 
-.date input, .wechat-id input{
+.date input, .wechat-id input, .which-day-time input{
     border:0;
     border-bottom: solid 1px #03A5D4;;
     cursor:pointer;
@@ -478,6 +478,10 @@ appointment button
     width: 100%;
     margin: 1em auto;
     margin-top: 1.5em;
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
 }
 
 fill-form button:hover,
