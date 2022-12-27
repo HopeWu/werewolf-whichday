@@ -17,4 +17,11 @@ class WhichDay extends Model
             ->groupBy('wechat_name')
             ->get();
     }
+
+    public static function votedBy($wechatName){
+        return self::where('wechat_name', '=', $wechatName)
+            ->orderBy('which_day')
+            ->take(10)
+            ->get();
+    }
 }
