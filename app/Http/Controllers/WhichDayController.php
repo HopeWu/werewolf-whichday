@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class WhichDayController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, $activity_code)
     {
         /*
          * validation
@@ -24,14 +24,18 @@ class WhichDayController extends Controller
                 ->withInput();
         }
         $attributes = $validator->validated();
+        if(!isset($activity_code)){
+            $activity_code = '0000';
+        }
 
         $whichDay = new WhichDay;
         $whichDay->wechat_name = $attributes['wechat-name'];
         $whichDay->which_day = $attributes['which-day'];
         $whichDay->time = $attributes['time'];
+        $whichDay->activity_code = $activity_code;
 
         $whichDay->save();
 
-        return view('thank-you', ['wname' => $attributes['wechat-name']]);
+        return view('thank-you', ['whichDay' => $whichDay]);
     }
 }

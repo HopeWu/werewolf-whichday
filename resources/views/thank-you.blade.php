@@ -4,7 +4,7 @@
             <img class="main-photo mouse" src="images/mouse1.jpg" alt="">
         </div>
         <div class="flex-center thank-you-note">
-            谢谢你呀, {{$wname}}~
+            谢谢你呀, {{$whichDay->wechat_name}}~
         </div>
         <a href="/">
             <button id="ty-return">
