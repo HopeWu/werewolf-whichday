@@ -11,24 +11,26 @@ class WhichDay extends Model
     public $guarded = [];
     protected $table = "which_day";
 
-    public static function votesSince($date){
+    public static function votesSince($date, $activity_code){
         return self::select('wechat_name', DB::raw('MAX(which_day) as which_day'), DB::raw('MAX(time) as time'))
             ->where('which_day', '>=', $date)
+            ->where('activity_code', '=', $activity_code)
             ->groupBy('wechat_name')
             ->get();
     }
 
     public static function votedBy($wechatName){
         return self::where('wechat_name', '=', $wechatName)
-            ->orderBy('which_day')
+            ->orderBy('activity_code', 'which_day')
             ->take(10)
             ->get();
     }
 
-    public static function resultSince($date): array
+    public static function resultSince($date, $activity_code): array
     {
         $votes = self::select('wechat_name', DB::raw('MAX(which_day) as which_day'), DB::raw('MAX(time) as time'))
             ->where('which_day', '>=', $date)
+            ->where('activity_code', '=', $activity_code)
             ->groupBy('wechat_name')
             ->get();
 

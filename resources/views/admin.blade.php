@@ -45,11 +45,22 @@
         <div>
             <form action="/admin123qwe" method='post'>
                 @csrf
-                <label for="result-since">投票开始时间</label>
-                <input type="date" name="result-since" id="result-since">
-                @error("result-since")
-                <p class="error">{{$message}}</p>
-                @enderror
+                <div>
+                    <label for="activity-code">活动代码</label>
+                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位数字">
+                    @error("activity-code")
+                    <p class="error">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="result-since">投票开始时间</label>
+                    <input type="date" name="result-since" id="result-since">
+                    @error("result-since")
+                    <p class="error">{{$message}}</p>
+                    @enderror
+                </div>
+
                 <div>
                     <button type="submit">开始统计</button>
                 </div>
@@ -85,14 +96,24 @@
         <div>
             <form action="/admin123qwe" method='post'>
                 @csrf
-                <label for="since">选择计票开始时间</label>
-                <input type="date" name="since" id="since">
-                @error("since")
-                <p class="error">{{$message}}</p>
-                @enderror
                 <div>
-                    <button type="submit">开始查询</button>
+                    <label for="activity-code">活动代码</label>
+                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位数字">
+                    @error("activity-code")
+                    <p class="error">{{$message}}</p>
+                    @enderror
                 </div>
+                <div>
+                    <label for="since">选择计票开始时间</label>
+                    <input type="date" name="since" id="since">
+                    @error("since")
+                    <p class="error">{{$message}}</p>
+                    @enderror
+                    <div>
+                        <button type="submit">开始查询</button>
+                    </div>
+                </div>
+
             </form>
         </div>
         @isset($votes)

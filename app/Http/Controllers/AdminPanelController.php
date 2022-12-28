@@ -17,7 +17,8 @@ class AdminPanelController extends Controller
         if (!$validator_list->fails()) {
             $isEmpty = false;
             $validator_list = Validator::make($request->all(), [
-                'since' => ['required', 'date']
+                'since' => ['date'],
+                'activity-code' => ['required', 'string'],
             ]);
 
             if ($validator_list->fails()) {
@@ -26,7 +27,7 @@ class AdminPanelController extends Controller
                     ->withInput();
             }else{
                 $attributes = $validator_list->validated();
-                $votes = WhichDay::votesSince($attributes['since']);
+                $votes = WhichDay::votesSince($attributes['since'], $attributes['activity-code']);
 
                 return view('admin', [
                     'votes' => $votes,
@@ -63,7 +64,8 @@ class AdminPanelController extends Controller
         if (!$validator_result->fails()) {
             $isEmpty = false;
             $validator_result = Validator::make($request->all(), [
-                'result-since' => ['date']
+                'result-since' => ['date'],
+                'activity-code' => ['required', 'string'],
             ]);
 
             if ($validator_result->fails()) {
@@ -72,13 +74,14 @@ class AdminPanelController extends Controller
                     ->withInput();
             }else{
                 $attributes = $validator_result->validated();
-                $counter = WhichDay::resultSince($attributes['result-since']);
+                $counter = WhichDay::resultSince($attributes['result-since'], $attributes['activity-code']);
 
                 return view('admin', [
                     'counter' => $counter,
                 ]);
             }
         }
+
         return redirect(url()->previous())
             ->withErrors($validator_result)
             ->withInput();
