@@ -6,6 +6,11 @@ body{
     display: flex;
 }
 
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
 main{
     position: relative;
     width: 80%;
@@ -367,10 +372,7 @@ h1#now{
     all:initial;
 }
 
-.flex-center{
-    display: flex;
-    justify-content: center;
-}
+
 
 .date input, .wechat-id input, .which-day-time input{
     border:0;
@@ -475,17 +477,59 @@ appointment button
     text-align: center;
     border-radius: 5px;
     display: block;
+    max-width: 3em;
     width: 100%;
     margin: 1em auto;
     margin-top: 1.5em;
     cursor: pointer;
 }
+
+button#sides {
+    all: initial;
+    color: white;
+    background-color: #4cd0f6;
+    font-weight: normal;
+    font-size: 1.2em;
+    padding: 0.2em 0em;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+    width: 6em;
+    margin: 0.5em 1em;
+    cursor: default;
+}
+
+button#in-between {
+    all: initial;
+    color: #000000;
+    background-color: #ffffff;
+    font-weight: normal;
+    font-size: 0.9em;
+    padding: 0.2em 0em;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+    /*width: 100%;*/
+    max-width: 3em;
+    margin: 0.5em 0.5em;
+    cursor: default;
+}
+
+.ty-3.flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 button{
     cursor: pointer;
 }
 
 .mb-1em{
     margin-bottom: 1em;
+}
+
+#disabled input{
+    cursor: not-allowed;
 }
 
 fill-form button:hover,

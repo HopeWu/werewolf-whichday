@@ -29,9 +29,9 @@
                         @enderror
                     </div>
 
-                    <div class="time flex-center">
-                        <input id="time" name="time" type="time"
-                               value="17:00">
+                    <div class="time flex-center" id="disabled">
+                        <input id="time" name="time" type="text"
+                               placeholder="晚上18:00左右" disabled>
                     </div>
                     <div class="flex-center">
                         @error("time")

@@ -12,33 +12,6 @@ class AdminPanelController extends Controller
     {
 
         /*
-         * check voting results
-         */
-        $validator_result = Validator::make($request->all(), [
-            'activity-code-result' => ['required'],
-        ]);
-        if (!$validator_result->fails()) {
-            $validator_result = Validator::make($request->all(), [
-                'activity-code-result' => ['string'],
-            ]);
-
-            if ($validator_result->fails()) {
-                return redirect(url()->previous())
-                    ->withErrors($validator_result)
-                    ->withInput();
-            }else{
-                $attributes = $validator_result->validated();
-                $counter = WhichDay::resultOf($attributes['activity-code-result']);
-                $votes = WhichDay::votesOf($attributes['activity-code-result']);
-
-                return view('admin', [
-                    'counter' => $counter,
-                    'votes' => $votes,
-                ]);
-            }
-        }
-
-        /*
          * check the voting records for a specified person
          */
         $validator_search = Validator::make($request->all(), [
@@ -53,7 +26,7 @@ class AdminPanelController extends Controller
                 return redirect(url()->previous())
                     ->withErrors($validator_search)
                     ->withInput();
-            }else{
+            } else {
                 $attributes = $validator_search->validated();
                 $records = WhichDay::votedBy($attributes['wechat-name']);
 
@@ -61,13 +34,36 @@ class AdminPanelController extends Controller
                     'records' => $records,
                 ]);
             }
-        }
+        } else {
+            /*
+            * check voting results
+            */
+            $validator_result = Validator::make($request->all(), [
+                'activity-code-result' => ['required'],
+            ]);
+            if (!$validator_result->fails()) {
+                $validator_result = Validator::make($request->all(), [
+                    'activity-code-result' => ['string'],
+                ]);
 
-        /*
-         * all empty
-         */
-        return redirect(url()->previous())
-            ->withErrors($validator_result)
-            ->withInput();
+                if ($validator_result->fails()) {
+                    return redirect(url()->previous())
+                        ->withErrors($validator_result)
+                        ->withInput();
+                }else{
+                    $attributes = $validator_result->validated();
+                    $activity_code = $attributes['activity-code-result'];
+                }
+            }else{
+                $activity_code = '0000';
+            }
+            $counter = WhichDay::resultOf($activity_code);
+            $votes = WhichDay::votesOf($activity_code);
+
+            return view('admin', [
+                'counter' => $counter,
+                'votes' => $votes,
+            ]);
+        }
     }
 }

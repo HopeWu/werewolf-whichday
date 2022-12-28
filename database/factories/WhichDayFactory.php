@@ -19,7 +19,6 @@ class WhichDayFactory extends Factory
         return [
             'wechat_name' => fake()->name(),
             'which_day' => fake()->date(),
-            'time' => fake()->time(),
             'activity_code' => '0000',
         ];
     }

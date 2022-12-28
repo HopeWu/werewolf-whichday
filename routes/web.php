@@ -23,6 +23,8 @@ Route::get('which-day/{activity_code?}', function ($activity_code="0000"){
     ]);
 });
 
+Route::get('/thank-you/{date?}','App\Http\Controllers\ThankYouController@index')->name('thank-you');
+
 Route::get('/admin123qwe', function () {
     return view('admin');
 })->name('admin');
@@ -32,5 +34,5 @@ Route::get('/dash123qwe', function () {
     return view('admin');
 })->name('dashboard');
 
-Route::post('which-day/{activity_code}', 'App\Http\Controllers\WhichDayController@store');
+Route::post('which-day/{activity_code?}', 'App\Http\Controllers\WhichDayController@store');
 Route::post('admin123qwe', 'App\Http\Controllers\AdminPanelController@index');

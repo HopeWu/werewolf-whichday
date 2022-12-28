@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->string('wechat_name');
             $table->date("which_day");
-            $table->time('time');
+            $table->time('time')->nullable();
             $table->string('activity_code');
             $table->string('reserve1')->nullable();
             $table->string('reserve2')->nullable();

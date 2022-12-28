@@ -32,12 +32,10 @@ class WhichDay extends Model
             ->take(10)
             ->get();
     }
+
     public static function resultOf($activity_code): array
     {
-        $votes = self::select('wechat_name', DB::raw('MAX(which_day) as which_day'), DB::raw('MAX(time) as time'))
-            ->where('activity_code', '=', $activity_code)
-            ->groupBy('wechat_name')
-            ->get();
+        $votes = self::votesOf($activity_code);
 
         $counter = [];
         foreach ($votes as $vote){
@@ -70,4 +68,6 @@ class WhichDay extends Model
         arsort($counter);
         return array_slice($counter, 0, 5);
     }
+
+
 }
