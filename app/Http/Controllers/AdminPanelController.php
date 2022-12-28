@@ -10,12 +10,13 @@ class AdminPanelController extends Controller
 {
     public function index(Request $request)
     {
-        $isEmpty = true;
+        /*
+         * check the voting records
+         */
         $validator_list = Validator::make($request->all(), [
             'since' => ['required']
         ]);
         if (!$validator_list->fails()) {
-            $isEmpty = false;
             $validator_list = Validator::make($request->all(), [
                 'since' => ['date'],
                 'activity-code' => ['required', 'string'],
@@ -35,11 +36,13 @@ class AdminPanelController extends Controller
             }
         }
 
+        /*
+         * check the voting records for a specified person
+         */
         $validator_search = Validator::make($request->all(), [
             'wechat-name' => ['required']
         ]);
         if (!$validator_search->fails()) {
-            $isEmpty = false;
             $validator_search = Validator::make($request->all(), [
                 'wechat-name' => ['string']
             ]);
@@ -58,11 +61,13 @@ class AdminPanelController extends Controller
             }
         }
 
+        /*
+         * check voting results
+         */
         $validator_result = Validator::make($request->all(), [
             'result-since' => ['required']
         ]);
         if (!$validator_result->fails()) {
-            $isEmpty = false;
             $validator_result = Validator::make($request->all(), [
                 'result-since' => ['date'],
                 'activity-code' => ['required', 'string'],
@@ -82,6 +87,9 @@ class AdminPanelController extends Controller
             }
         }
 
+        /*
+         * all empty
+         */
         return redirect(url()->previous())
             ->withErrors($validator_result)
             ->withInput();
