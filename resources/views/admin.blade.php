@@ -47,7 +47,7 @@
                 @csrf
                 <div>
                     <label for="activity-code">活动代码</label>
-                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位数字">
+                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位">
                     @error("activity-code")
                     <p class="error">{{$message}}</p>
                     @enderror
@@ -98,7 +98,7 @@
                 @csrf
                 <div>
                     <label for="activity-code">活动代码</label>
-                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位数字">
+                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位">
                     @error("activity-code")
                     <p class="error">{{$message}}</p>
                     @enderror
