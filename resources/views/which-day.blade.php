@@ -2,7 +2,7 @@
     <main>
         <article class="fill-form">
             <div>
-                <img class="main-photo" src="images/castle-small.jpg" alt="">
+                <img class="main-photo" src="{{asset('images/castle-small.jpg')}}" alt="">
             </div>
 
             <form class="which-day-time" action="/which-day/{{$activity_code}}" method="post">

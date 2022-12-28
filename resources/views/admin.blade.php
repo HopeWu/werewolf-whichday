@@ -21,6 +21,7 @@
                         <th>微信名</th>
                         <th>选择日期</th>
                         <th>选择时间</th>
+                        <th>活动代码</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                             <td>{{$item->wechat_name}}</td>
                             <td>{{$item->which_day}}</td>
                             <td>{{$item->time}}</td>
+                            <td>{{$item->activity_code}}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -68,7 +70,7 @@
             @isset($counter)
                 <div class="schedule">
                     <table>
-                        <caption>Schedules for Today:</caption>
+                        <caption>统计结果</caption>
                         <thead>
                         <tr>
                             <th>日期</th>
@@ -119,7 +121,7 @@
         @isset($votes)
             <div class="schedule">
                 <table>
-                    <caption>Schedules for Today:</caption>
+                    <caption>投票记录</caption>
                     <thead>
                     <tr>
                         <th>微信名</th>
