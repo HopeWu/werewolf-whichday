@@ -24,7 +24,6 @@ class ThankYouController extends Controller
              * we hint the user, and maybe he wants to vote again.
              * @param majority
              */
-            dd($keys[0]);
             $majority = 3;
             if($result[$keys[0]] >= $majority
                 and
