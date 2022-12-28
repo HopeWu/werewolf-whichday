@@ -24,8 +24,12 @@ class ThankYouController extends Controller
              * we hint the user, and maybe he wants to vote again.
              * @param majority
              */
+            dd($keys[0]);
             $majority = 3;
-            if($result[$keys[0]] >= $majority and ($date != $keys[0] or $date != $keys[1])){
+            if($result[$keys[0]] >= $majority
+                and
+                ($date != $keys[0] or $date != $keys[1])
+            ){
                 return view('thank-you', [
                     'date1' => $keys[0],
                     'date2' => $keys[1],

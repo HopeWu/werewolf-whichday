@@ -23,13 +23,21 @@
                     </button>
                 </a>
                 <button id="in-between">或者</button>
+                <a href="{{ URL::previous() }}">
+                    <button id="sides">
+                        就这样
+                    </button>
+                </a>
             @endisset
 
-            <a href="{{ URL::previous() }}">
-                <button id="sides">
-                    就这样
-                </button>
-            </a>
+            @if(empty($date1))
+                <a href="{{ URL::previous() }}">
+                    <button id="sides">
+                        返回
+                    </button>
+                </a>
+            @endif
+
         </div>
     </main>
 </x-master2>
