@@ -48,7 +48,7 @@ class WhichDay extends Model
             }
         }
         arsort($counter);
-        return array_slice($counter, 0, 5);
+        return array_slice($counter, 0, 3);
     }
 
     public static function resultSince($date, $activity_code): array

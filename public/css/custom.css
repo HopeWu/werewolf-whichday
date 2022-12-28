@@ -484,6 +484,10 @@ button{
     cursor: pointer;
 }
 
+.mb-1em{
+    margin-bottom: 1em;
+}
+
 fill-form button:hover,
 button.go-to-form:hover{
     cursor: pointer;
