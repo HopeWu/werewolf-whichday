@@ -21,10 +21,10 @@ return new class extends Migration
             $table->date("which_day");
             $table->time('time');
             $table->string('activity_code');
-            $table->string('reserve1');
-            $table->string('reserve2');
-            $table->string('reserve3');
-            $table->string('reserve4');
+            $table->string('reserve1')->nullable();
+            $table->string('reserve2')->nullable();
+            $table->string('reserve3')->nullable();
+            $table->string('reserve4')->nullable();
         });
 
     }

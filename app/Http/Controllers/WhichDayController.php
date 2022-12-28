@@ -24,6 +24,7 @@ class WhichDayController extends Controller
                 ->withInput();
         }
         $attributes = $validator->validated();
+
         if(!isset($activity_code)){
             $activity_code = '0000';
         }

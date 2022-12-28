@@ -21,10 +21,6 @@ class WhichDayFactory extends Factory
             'which_day' => fake()->date(),
             'time' => fake()->time(),
             'activity_code' => '0000',
-            'reserve1' => '0000',
-            'reserve2' => '0000',
-            'reserve3' => '0000',
-            'reserve4' => '0000',
         ];
     }
 }

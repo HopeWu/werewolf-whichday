@@ -6,7 +6,7 @@
         <div class="flex-center thank-you-note">
             谢谢你呀, {{$whichDay->wechat_name}}~
         </div>
-        <a href="/">
+        <a href="{{ URL::previous() }}">
             <button id="ty-return">
                 返回
             </button>

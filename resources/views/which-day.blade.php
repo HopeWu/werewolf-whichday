@@ -5,7 +5,7 @@
                 <img class="main-photo" src="images/castle-small.jpg" alt="">
             </div>
 
-            <form class="which-day-time" action="/whick-day" method="post">
+            <form class="which-day-time" action="/which-day/{{$activity_code}}" method="post">
                 @csrf
 
                 <div class="inputs">

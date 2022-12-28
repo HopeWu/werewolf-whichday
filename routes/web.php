@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('which-day');
+    return redirect('/which-day/0000');
 });
 
-Route::get('which-day', function (){
-    return view('which-day');
+Route::get('which-day/{activity_code?}', function ($activity_code="0000"){
+    return view('which-day',[
+        'activity_code' => $activity_code,
+    ]);
 });
 
 Route::get('/admin123qwe', function () {
@@ -30,5 +32,5 @@ Route::get('/dash123qwe', function () {
     return view('admin');
 })->name('dashboard');
 
-Route::post('whick-day/activity-code?{activity_code}', 'App\Http\Controllers\WhichDayController@store');
+Route::post('which-day/{activity_code}', 'App\Http\Controllers\WhichDayController@store');
 Route::post('admin123qwe', 'App\Http\Controllers\AdminPanelController@index');
