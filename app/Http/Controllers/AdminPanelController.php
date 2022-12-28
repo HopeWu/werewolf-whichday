@@ -14,12 +14,11 @@ class AdminPanelController extends Controller
          * check the voting records
          */
         $validator_list = Validator::make($request->all(), [
-            'since' => ['required']
+            'activity-code-records' => ['required'],
         ]);
         if (!$validator_list->fails()) {
             $validator_list = Validator::make($request->all(), [
-                'since' => ['date'],
-                'activity-code' => ['required', 'string'],
+                'activity-code-records' => ['string'],
             ]);
 
             if ($validator_list->fails()) {
@@ -28,7 +27,7 @@ class AdminPanelController extends Controller
                     ->withInput();
             }else{
                 $attributes = $validator_list->validated();
-                $votes = WhichDay::votesSince($attributes['since'], $attributes['activity-code']);
+                $votes = WhichDay::votesOf($attributes['activity-code-records']);
 
                 return view('admin', [
                     'votes' => $votes,
@@ -65,12 +64,11 @@ class AdminPanelController extends Controller
          * check voting results
          */
         $validator_result = Validator::make($request->all(), [
-            'result-since' => ['required']
+            'activity-code-result' => ['required'],
         ]);
         if (!$validator_result->fails()) {
             $validator_result = Validator::make($request->all(), [
-                'result-since' => ['date'],
-                'activity-code' => ['required', 'string'],
+                'activity-code-result' => ['string'],
             ]);
 
             if ($validator_result->fails()) {
@@ -79,7 +77,7 @@ class AdminPanelController extends Controller
                     ->withInput();
             }else{
                 $attributes = $validator_result->validated();
-                $counter = WhichDay::resultSince($attributes['result-since'], $attributes['activity-code']);
+                $counter = WhichDay::resultOf($attributes['activity-code-result']);
 
                 return view('admin', [
                     'counter' => $counter,

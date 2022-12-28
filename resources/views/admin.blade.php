@@ -48,17 +48,9 @@
             <form action="/admin123qwe" method='post'>
                 @csrf
                 <div>
-                    <label for="activity-code">活动代码</label>
-                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位">
-                    @error("activity-code")
-                    <p class="error">{{$message}}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="result-since">投票开始时间</label>
-                    <input type="date" name="result-since" id="result-since">
-                    @error("result-since")
+                    <label for="activity-code-result">活动代码</label>
+                    <input type="number" name="activity-code-result" id="activity-code-result" placeholder="投票链接后四位">
+                    @error("activity-code-result")
                     <p class="error">{{$message}}</p>
                     @enderror
                 </div>
@@ -99,21 +91,15 @@
             <form action="/admin123qwe" method='post'>
                 @csrf
                 <div>
-                    <label for="activity-code">活动代码</label>
-                    <input type="number" name="activity-code" id="activity-code" placeholder="投票链接后四位">
-                    @error("activity-code")
+                    <label for="activity-code-records">活动代码</label>
+                    <input type="number" name="activity-code-records" id="activity-code-records" placeholder="投票链接后四位">
+                    @error("activity-code-records")
                     <p class="error">{{$message}}</p>
                     @enderror
                 </div>
+
                 <div>
-                    <label for="since">选择计票开始时间</label>
-                    <input type="date" name="since" id="since">
-                    @error("since")
-                    <p class="error">{{$message}}</p>
-                    @enderror
-                    <div>
-                        <button type="submit">开始查询</button>
-                    </div>
+                    <button type="submit">开始查询</button>
                 </div>
 
             </form>
