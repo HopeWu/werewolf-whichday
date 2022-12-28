@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('wechat_name');
             $table->date("which_day");
             $table->time('time');
+            $table->integer('activity_code');
         });
 
     }
