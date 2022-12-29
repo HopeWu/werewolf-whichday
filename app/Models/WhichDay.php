@@ -19,11 +19,14 @@ class WhichDay extends Model
 
     public static function votesOf($activity_code){
         $sub = self::select('wechat_name', DB::raw("max(created_at) as latest_date"))
+            ->where('activity_code', '=', $activity_code)
             ->groupBy('wechat_name');
         $data = self::join(DB::raw("({$sub->toSql()}) latest_table"), function ($join){
             $join->on('latest_table.wechat_name', '=', 'which_day.wechat_name')
             ->on('latest_table.latest_date', '=', 'which_day.created_at');
-        })->get();
+        })
+            ->addBinding($sub->getBindings(), 'join')
+            ->get();
 
         return $data;
     }
