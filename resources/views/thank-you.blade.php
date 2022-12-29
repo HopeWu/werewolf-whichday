@@ -1,7 +1,7 @@
 <x-master2>
     <main class="fill-form">
         <div>
-            <img class="main-photo mouse" src="{{asset('images/fun-portrait1.jpg')}}" alt="">
+            <img class="main-photo mouse" src="{{asset($funPicPath)}}" alt="">
         </div>
         <div class="flex-center thank-you-note">
             谢谢你呀, {{session()->get('whichDay')->wechat_name}}~
