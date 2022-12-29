@@ -11,7 +11,7 @@
             </button>
         </div>
     </form>
-    @isset($records)
+    @if(!$records->isEmpty())
         <article class="today schedules">
             <div class="schedule">
                 <table>
@@ -38,7 +38,13 @@
                 </table>
             </div>
         </article>
-    @endisset
+    @else
+        <article class="today schedules">
+            <div class="schedule">
+                该用户未投票
+            </div>
+        </article>
+    @endif
 
     <article class="today schedules">
         <h3>
