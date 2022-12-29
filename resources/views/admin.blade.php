@@ -11,40 +11,42 @@
             </button>
         </div>
     </form>
-    @if(!$records->isEmpty())
-        <article class="today schedules">
-            <div class="schedule">
-                <table>
-                    <caption>{{$records->first()->wechat_name}}的投票记录:</caption>
-                    <thead>
-                    <tr>
-                        <th>微信名</th>
-                        <th>选择日期</th>
-                        <th>选择时间</th>
-                        <th>活动代码</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    @foreach($records as $item)
+    @isset($records)
+        @if(!$records->isEmpty())
+            <article class="today schedules">
+                <div class="schedule">
+                    <table>
+                        <caption>{{$records->first()->wechat_name}}的投票记录:</caption>
+                        <thead>
                         <tr>
-                            <td>{{$item->wechat_name}}</td>
-                            <td>{{$item->which_day}}</td>
-                            <td>{{$item->time}}</td>
-                            <td>{{$item->activity_code}}</td>
+                            <th>微信名</th>
+                            <th>选择日期</th>
+                            <th>选择时间</th>
+                            <th>活动代码</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </article>
-    @else
-        <article class="today schedules">
-            <div class="schedule">
-                该用户未投票
-            </div>
-        </article>
-    @endif
+                        </thead>
+                        <tbody>
+
+                        @foreach($records as $item)
+                            <tr>
+                                <td>{{$item->wechat_name}}</td>
+                                <td>{{$item->which_day}}</td>
+                                <td>{{$item->time}}</td>
+                                <td>{{$item->activity_code}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        @else
+            <article class="today schedules">
+                <div class="schedule">
+                    该用户未投票
+                </div>
+            </article>
+        @endif
+    @endisset
 
     <article class="today schedules">
         <h3>
