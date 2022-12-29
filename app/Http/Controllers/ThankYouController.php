@@ -27,7 +27,7 @@ class ThankYouController extends Controller
             $majority = 3;
             if($result[$keys[0]] >= $majority
                 and
-                ($date != $keys[0] or $date != $keys[1])
+                ($date != $keys[0] and $date != $keys[1])
             ){
                 return view('thank-you', [
                     'date1' => $keys[0],
